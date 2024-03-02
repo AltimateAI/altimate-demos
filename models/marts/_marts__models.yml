@@ -1,0 +1,26 @@
+models:
+  - name: daily_user_kpi
+    description: "The 'daily_user_kpi' model provides a daily summary of user
+      activities. It includes three columns: 'day', 'user_id', and
+      'number_of_activities'. The 'day' column represents the date of the
+      activity. The 'user_id' column is a unique identifier for each user. The
+      'number_of_activities' column shows the total number of activities
+      performed by a user on a particular day. This model is built by joining
+      the 'base_public_activity' and 'base_public_user' tables from the
+      'postgresDB' database. It is useful for tracking user engagement and
+      activity patterns over time."
+    columns:
+      - name: day
+        description: This column represents the date on which the user activities were
+          recorded. It is a timestamp without the time zone, meaning it only
+          includes the date and not the specific time of the activity.
+        data_type: timestamp without time zone
+      - name: user_id
+        description: This column represents the unique identifier of a user. It is an
+          integer value that is used to distinguish each user in the database.
+        data_type: integer
+      - name: number_of_activities
+        description: This column represents the total number of activities a user has
+          performed on a given day. It is a count of all activities recorded for
+          a specific user on a specific date.
+        data_type: bigint
