@@ -19,10 +19,6 @@ final as (
         salesforce_users.last_name,
         salesforce_users.email,
         salesforce_users.phone,
-        salesforce_users.address,
-        salesforce_users.last_contacted_date,
-        salesforce_users.created_date,
-        salesforce_users.modified_date,
 
         user_activities.count_activity
     from postgres_users
