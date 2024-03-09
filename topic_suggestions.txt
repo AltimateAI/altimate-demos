@@ -8,3 +8,15 @@
     - Generate a jinja for loop
         1. Could you modify it using jinja for loop, make sure that there is no comma in the end of the for loop?
         2. Could you please add these three new columns to my final CTE using jinja for lopp?
+
+## Topic create a marts from scratch
+
+with salesforce_users as (
+    select * from {{ ref('base_salesforce_users') }}
+), postgres_users as (
+    select * from {{ ref('base_public_user') }}
+)
+
+select *
+from salesforce_users
+left join postgres_users using (user_id, email)
