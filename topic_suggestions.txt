@@ -1,10 +1,6 @@
-## Topic dbt model update using natural language:
+## Topic debt model debug - Model validation and query analysis
 
-- Use the marts user, but at least 5 staging layer tables as source
-- Have Datapilot explain one specific CTE
-- Change other pieces of the code, more specifically, explore:
-    - Add two new columns that would do count ifs
-        1. Could you please add 3 more columns, to count each activity type (login, logout, post)?
-    - Generate a jinja for loop
-        1. Could you modify it using jinja for loop, make sure that there is no comma in the end of the for loop?
-        2. Could you please add these three new columns to my final CTE using jinja for lopp?
+Have a marts model with some basic calculation and a downstream dependency.
+
+Change the calculation of this model, and select the wrong column -> Validate SQL.
+Do a quick analysis.
