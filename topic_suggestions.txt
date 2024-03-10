@@ -1,6 +1,11 @@
-## Topic debt model debug - Model validation and query analysis
+## Topic dbt model debug - Model validation and query analysis
 
 Have a marts model with some basic calculation and a downstream dependency.
 
-Change the calculation of this model, and select the wrong column -> Validate SQL.
-Do a quick analysis.
+- Video 1:
+  - Change the calculation of this model, and select the wrong column -> Validate SQL.
+  - Do a quick analysis.
+
+- Video 2: 
+  - Change the calculation of one model, and use the column lineage to check the impact of this change
+  - Run the model health check

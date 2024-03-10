@@ -6,16 +6,18 @@ select
     salesforce_users.user_id,
     salesforce_users.email,
 
+    postgres_users.username,
     salesforce_users.first_name,
     salesforce_users.last_name,
     salesforce_users.phone,
     salesforce_users.address,
+
+    salesforce_users.is_active,
+
     salesforce_users.last_contacted_date,
     salesforce_users.created_date,
     salesforce_users.modified_date,
-    salesforce_users.is_active,
 
-    postgres_users.username,
     postgres_users.created_at
 from salesforce_users
 left join postgres_users on salesforce_users.user_id = postgres_users.user_id
