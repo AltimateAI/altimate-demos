@@ -1,6 +1,21 @@
 with
-    salesforce_users as (select * from {{ ref("base_salesforce_users") }}),
-    postgres_users as (select * from {{ ref("base_public_user") }})
+    salesforce_users as (
+        select
+            user_id,
+            email,
+            first_name,
+            last_name,
+            phone,
+            address,
+            is_active,
+            last_contacted_date,
+            created_date,
+            modified_date
+        from {{ ref("base_salesforce_users") }}
+    ),
+    postgres_users as (
+        select user_id, username, created_at from {{ ref("base_public_user") }}
+    )
 
 select
     salesforce_users.user_id,
