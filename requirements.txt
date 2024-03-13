@@ -1,2 +1,2 @@
 shandy-sqlfmt[jinjafmt]
-dbt-postgres
+dbt-bigquery
