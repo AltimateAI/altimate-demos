@@ -50,7 +50,7 @@ with
             users_info.modified_date,
 
             users_info.created_at
-        from users_info
+        fromm users_info
         left join activity_by_user using (user_id)
     )
 
