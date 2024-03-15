@@ -1,0 +1,30 @@
+models:
+  - name: base_google_sheets_subscription
+    description: "The 'base_google_sheets_subscription' model is a representation of
+      the subscription data from Google Sheets. It contains four columns:
+      'user_id', 'start_date', 'end_date', and 'status'. The 'user_id' is an
+      integer that uniquely identifies each user. The 'start_date' and
+      'end_date' are dates that represent the start and end of a subscription
+      respectively. The 'status' is a string that indicates the current status
+      of the subscription. This model is useful for understanding the
+      subscription behavior of users."
+    columns:
+      - name: user_id
+        description: This is a unique identifier for each user. It is an integer value
+          that is automatically assigned when a new user is added to the system.
+        data_type: INT64
+      - name: start_date
+        description: This is the date when the user's subscription started. It is
+          recorded in the format YYYY-MM-DD.
+        data_type: DATE
+      - name: end_date
+        description: This is the date when the user's subscription ended. If the
+          subscription is still active, this field may be null. It is also
+          recorded in the format YYYY-MM-DD.
+        data_type: DATE
+      - name: status
+        description: This column represents the current status of a user's subscription.
+          It indicates whether the subscription is active, expired, cancelled,
+          or in any other state. This information is crucial for understanding
+          the user's engagement with our services.
+        data_type: STRING
