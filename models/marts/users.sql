@@ -14,8 +14,7 @@ with
             salesforce_users.email,
 
             postgres_users.username,
-            salesforce_users.first_name,
-            salesforce_users.last_name,
+            concat(salesforce_users.first_name, ' ', salesforce_users.last_name) as name,
             salesforce_users.phone,
             salesforce_users.address,
 
@@ -36,8 +35,7 @@ with
             users_info.email,
 
             users_info.username,
-            users_info.first_name,
-            users_info.last_name,
+            users_info.name,
             users_info.phone,
             users_info.address,
 
@@ -50,7 +48,7 @@ with
             users_info.modified_date,
 
             users_info.created_at
-        fromm users_info
+        from users_info
         left join activity_by_user using (user_id)
     )
 
