@@ -22,7 +22,7 @@ models:
           subscription is still active, this field may be null. It is also
           recorded in the format YYYY-MM-DD.
         data_type: DATE
-      - name: is_active
+      - name: status
         description: This column indicates whether a user's subscription is currently
           active or not. If the value is 'true', it means the user's
           subscription is active. If the value is 'false', it means the user's
