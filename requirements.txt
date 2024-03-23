@@ -1,2 +1,3 @@
 shandy-sqlfmt[jinjafmt]
 dbt-bigquery
+altimate-datapilot
