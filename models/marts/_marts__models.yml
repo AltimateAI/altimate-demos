@@ -139,22 +139,18 @@ models:
       - name: email
         description: This is the email address of the user. It is used to identify the
           user and can be used to communicate with them if necessary.
-        data_type: STRING
       - name: activity_type
         description: This column describes the type of activity performed by the user.
           It can include various actions like 'login', 'logout', 'purchase',
           etc. This information is crucial for understanding user behavior and
           engagement patterns.
-        data_type: STRING
       - name: number_of_activities
         description: This column represents the total number of activities performed by
           a user. Each activity is associated with a specific type, such as
           login, logout, purchase, etc. This data is useful for understanding
           user behavior and engagement levels.
-        data_type: INT64
       - name: last_activity_date
         description: This column represents the date and time of the most recent
           activity performed by the user. It is recorded in a timestamp format.
           This information can be useful to understand the user's recent
           engagement with our platform.
-        data_type: TIMESTAMP
