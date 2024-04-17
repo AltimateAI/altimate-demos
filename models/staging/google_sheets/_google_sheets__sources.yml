@@ -2,5 +2,13 @@ version: 2
 
 sources:
   - name: google_sheets
+    loader: Airbyte
     tables:
       - name: subscription
+        tags:
+          - source
+        columns:
+          - name: user_id
+            description: User id
+            tests:
+              - unique

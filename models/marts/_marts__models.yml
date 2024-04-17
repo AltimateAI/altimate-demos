@@ -14,6 +14,9 @@ models:
           created. This field is used to link user data across different tables
           and databases.
         data_type: INT64
+        tests:
+          - unique
+          - not_null
       - name: email
         description: This field contains the email address of the user. It is a string
           of characters and is used for communication purposes. It is also
@@ -66,7 +69,9 @@ models:
           used for cohort analysis.
         data_type: TIMESTAMP
       - name: modified_date
-        description: ""
+        description: The 'modified_date' column represents the date and time when the
+          user's information was last updated in the Salesforce database. It is
+          of TIMESTAMP data type.
         data_type: TIMESTAMP
       - name: created_at
         description: This field records the date and time when the user's account was
@@ -87,6 +92,9 @@ models:
         description: This column represents the specific date for which the data is
           being reported. It is in the format of YYYY-MM-DD.
         data_type: date
+        tests:
+          - unique
+          - not_null
       - name: number_users
         description: This column indicates the total number of users who have accessed
           our platform on the given day. It includes both new and returning

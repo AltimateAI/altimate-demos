@@ -2,6 +2,21 @@ version: 2
 
 sources:
   - name: postgres
+    loader: Airbyte
     tables:
       - name: user
+        tags:
+          - source
+        columns:
+          - name: user_id
+            description: User id
+            tests:
+              - unique
       - name: activity
+        tags:
+          - source
+        columns:
+          - name: activity_id
+            description: Activity id
+            tests:
+              - unique
