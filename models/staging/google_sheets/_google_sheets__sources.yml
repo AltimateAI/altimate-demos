@@ -5,6 +5,7 @@ sources:
     loader: Airbyte
     tables:
       - name: subscription
+        description: Subscription table in Google Sheets
         tags:
           - source
         columns:

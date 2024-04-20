@@ -5,6 +5,7 @@ sources:
     loader: Airbyte
     tables:
       - name: users
+        description: User table in Salesforce
         tags:
           - source
         columns:

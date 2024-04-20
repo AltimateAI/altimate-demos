@@ -5,6 +5,7 @@ sources:
     loader: Airbyte
     tables:
       - name: user
+        description: User table in Postgres
         tags:
           - source
         columns:
@@ -13,6 +14,7 @@ sources:
             tests:
               - unique
       - name: activity
+        description: Activity table in Postgres
         tags:
           - source
         columns:
