@@ -1,5 +1,5 @@
 with
-    users as (select * from {{ ref("users") }}),
+    users as (select * from {{ ref("dim_users") }}),
     subscription as (select * from {{ ref("base_google_sheets_subscription") }}),
     activities as (select * from {{ ref("base_public_activity") }}),
 

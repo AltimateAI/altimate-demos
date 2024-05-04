@@ -10,8 +10,10 @@ models:
       subscription behavior of users."
     columns:
       - name: user_id
-        description: This is a unique identifier for each user. It is an integer value
-          that is automatically assigned when a new user is added to the system.
+        description: This is a unique identifier for each user in our system. It is an
+          integer value and is automatically generated when a new user is
+          created. This field is used to link user data across different tables
+          and databases.
         data_type: INT64
         tests:
           - unique

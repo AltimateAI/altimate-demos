@@ -1,5 +1,5 @@
 with users as (
-    select * from {{ ref('users') }}
+    select * from {{ ref('dim_users') }}
 ), activities as (
     select * from {{ ref('base_public_activity') }}
 ),

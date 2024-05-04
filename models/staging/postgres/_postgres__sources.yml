@@ -10,7 +10,10 @@ sources:
           - source
         columns:
           - name: user_id
-            description: User id
+            description: This is a unique identifier for each user in our system. It is an
+              integer value and is automatically generated when a new user is
+              created. This field is used to link user data across different tables
+              and databases.
             tests:
               - unique
       - name: activity
