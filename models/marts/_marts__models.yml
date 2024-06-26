@@ -164,3 +164,45 @@ models:
           activity performed by the user. It is recorded in a timestamp format.
           This information can be useful to understand the user's recent
           engagement with our platform.
+  - name: dim_activities
+    description: "The 'dim_activities' model is a transformation of the
+      'base_public_activity' table from the 'dbt_patricia_staging' dataset. It
+      provides a simplified view of user activities, with each row representing
+      a unique activity. The model includes the following columns: 'id' (the
+      unique identifier for each activity), 'user_id' (the identifier for the
+      user who performed the activity), 'type' (the type of activity performed),
+      'description' (a brief description of the activity), and 'date' (the date
+      when the activity was performed). This model is useful for analyzing user
+      behavior and activity trends over time."
+    columns:
+      - name: id
+        description: This is a unique identifier for each activity. It is used to
+          distinguish one activity from another and is crucial for tracking and
+          analysis purposes.
+        data_type: int64
+        quote: true
+      - name: user_id
+        description: This is the unique identifier for each user. It helps to identify
+          which user performed a particular activity. This is useful for
+          understanding user behavior and patterns.
+        data_type: int64
+        quote: true
+      - name: type
+        description: This field describes the type of activity performed by the user. It
+          provides context to the activity and can be used to categorize
+          activities for further analysis.
+        data_type: string
+        quote: true
+      - name: description
+        description: This column contains a brief summary of the activity that the user
+          has performed. It provides a textual explanation of the user's
+          actions, which can be useful for understanding user behavior and
+          trends.
+        data_type: string
+        quote: true
+      - name: date
+        description: This column records the date and time when the activity was
+          performed by the user. It is stored in a timestamp format, allowing
+          for precise tracking of user activities over time.
+        data_type: timestamp
+        quote: true

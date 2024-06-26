@@ -1,17 +1,17 @@
 with
     users as (select * from {{ ref("dim_users") }}),
     subscription as (select * from {{ ref("base_google_sheets_subscription") }}),
-    activities as (select * from {{ ref("base_public_activity") }}),
+    activities as (select * from {{ ref("dim_activities") }}),
 
     number_of_activities as (
         select
             current_date as day,
             count(*) as number_activities,
-            sum(case when activity_type = 'login' then 1 else 0 end) as number_logins,
-            sum(case when activity_type = 'logout' then 1 else 0 end) as number_logouts,
-            sum(case when activity_type = 'post' then 1 else 0 end) as number_posts
+            sum(case when type = 'login' then 1 else 0 end) as number_logins,
+            sum(case when type = 'logout' then 1 else 0 end) as number_logouts,
+            sum(case when type = 'post' then 1 else 0 end) as number_posts
         from activities
-        where date(activity_date) = current_date
+        where date(date) = current_date
     ), number_of_users as (
         select
             current_date as day,
