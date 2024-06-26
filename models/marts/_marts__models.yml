@@ -149,21 +149,27 @@ models:
           of characters and is used for communication purposes. It is also
           unique for each user, meaning no two users can have the same email
           address in our system.
-      - name: activity_type
-        description: This column describes the type of activity performed by the user.
-          It can include various actions like 'login', 'logout', 'purchase',
-          etc. This information is crucial for understanding user behavior and
-          engagement patterns.
+        data_type: string
+      - name: type
+        description: This column represents the type of activity that the user has
+          engaged in. It is a string value that can vary depending on the
+          different types of activities available in the system. This
+          information is crucial for understanding user behavior and
+          preferences.
+        data_type: string
+        quote: true
       - name: number_of_activities
         description: This column represents the total number of activities that a user
           has performed. It is calculated by counting the number of entries in
           the 'activities' table for each user. This information can be useful
           for understanding user engagement and activity levels.
+        data_type: int64
       - name: last_activity_date
         description: This column represents the date and time of the most recent
           activity performed by the user. It is recorded in a timestamp format.
           This information can be useful to understand the user's recent
           engagement with our platform.
+        data_type: timestamp
   - name: dim_activities
     description: "The 'dim_activities' model is a transformation of the
       'base_public_activity' table from the 'dbt_patricia_staging' dataset. It
