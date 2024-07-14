@@ -27,6 +27,7 @@ with
             postgres_users.created_at
         from salesforce_users
         left join postgres_users using (user_id)
+        where salesforce_users.is_active
     ),
 
     final as (
