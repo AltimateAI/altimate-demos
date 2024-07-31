@@ -14,7 +14,11 @@ with
             salesforce_users.email,
 
             postgres_users.username,
-            concat(salesforce_users.first_name, ' ', salesforce_users.last_name) as name,
+            concat(
+                salesforce_users.first_name,
+                ' ',
+                salesforce_users.last_name
+            ) as name,
             salesforce_users.phone,
             salesforce_users.address,
 
