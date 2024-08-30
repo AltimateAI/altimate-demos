@@ -15,11 +15,6 @@ final as (
     select
         user_id,
 
-        salesforce_users.first_name,
-        salesforce_users.last_name,
-        salesforce_users.email,
-        salesforce_users.phone,
-
         user_activities.count_activity
     from postgres_users
     inner join salesforce_users using (user_id)
