@@ -1,5 +1,5 @@
 with source as (
-      select * from {{ source('public', 'user') }}
+      select * from {{ source('postgres', 'user') }}
 ),
 renamed as (
     select

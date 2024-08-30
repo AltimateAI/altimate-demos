@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: public
+  - name: postgres
     tables:
       - name: user
       - name: activity
