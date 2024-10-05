@@ -1,13 +1,7 @@
 with
     salesforce_users as (select * from {{ ref("base_salesforce_users") }}),
     postgres_users as (select * from {{ ref("base_public_user") }}),
-    activities as (select * from {{ ref("base_public_activity") }}),
 
-    activity_by_user as (
-        select user_id, count(*) as number_of_activities
-        from activities
-        group by user_id
-    ),
     users_info as (
         select
             salesforce_users.user_id,
@@ -40,8 +34,6 @@ with
             users_info.phone,
             users_info.address,
 
-            activity_by_user.number_of_activities,
-
             users_info.is_active,
 
             users_info.last_contacted_date,
@@ -50,7 +42,6 @@ with
 
             users_info.created_at
         from users_info
-        left join activity_by_user using (user_id)
     )
 
 select *
