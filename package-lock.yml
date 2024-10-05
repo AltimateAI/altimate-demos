@@ -3,6 +3,10 @@ packages:
   version: 1.1.1
 - package: calogica/dbt_expectations
   version: 0.10.3
+- package: kgmcquate/testgen
+  version: 1.0.3
+- package: dbt-labs/codegen
+  version: 0.12.1
 - package: calogica/dbt_date
-  version: 0.10.0
-sha1_hash: 8a2069ea8f6d980a2abaae65c8a0352f61b31ce3
+  version: 0.10.1
+sha1_hash: 7fdc57f4e64f065e3c10622a2e02ef3b969b9cff
