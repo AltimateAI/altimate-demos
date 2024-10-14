@@ -1,7 +1,7 @@
 with
     salesforce_users as (select * from {{ ref("base_salesforce_users") }}),
-    postgres_users as (select * from {{ ref("base_public_user") }}),
-    activities as (select * from {{ ref("base_public_activity") }}),
+    postgres_users as (select * from {{ ref("stg_postgres__user") }}),
+    activities as (select * from {{ ref("stg_postgres__activity") }}),
 
     activity_by_user as (
         select user_id, count(*) as number_of_activities

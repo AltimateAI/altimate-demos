@@ -1,6 +1,6 @@
 models:
-  - name: base_public_activity
-    description: "The 'base_public_activity' model is a transformation of the
+  - name: stg_postgres__activity
+    description: "The 'stg_postgres__activity' model is a transformation of the
       'activity' table from the 'postgres' database. It contains information
       about various activities performed by users. The model includes the
       following columns: 'activity_id', 'user_id', 'activity_type',
@@ -49,8 +49,8 @@ models:
           depending on the activity type. This can be used to gain more context
           about the user's actions and behavior.
         data_type: string
-  - name: base_public_user
-    description: "The 'base_public_user' model is a simplified and renamed version
+  - name: stg_postgres__user
+    description: "The 'stg_postgres__user' model is a simplified and renamed version
       of the original 'user' table from the 'postgres' database. It includes
       four key fields: 'user_id', 'username', 'email', and 'created_at'.
       'user_id' is a unique identifier for each user. 'username' is the chosen

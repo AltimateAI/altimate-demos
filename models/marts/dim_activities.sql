@@ -1,5 +1,5 @@
 with activity as (
-    select * from {{ ref('base_public_activity') }}
+    select * from {{ ref('stg_postgres__activity') }}
 ),
 
 final as (

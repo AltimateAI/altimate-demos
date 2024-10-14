@@ -134,7 +134,7 @@ models:
   - name: fct_user_activities
     description: "The 'fct_user_activities' model is a comprehensive view of user
       activities within our system. It combines data from the 'users' and
-      'base_public_activity' tables to provide a detailed overview of each
+      'stg_postgres__activity' tables to provide a detailed overview of each
       user's activities. The model includes the following columns: 'id',
       'email', 'activity_type', and 'number_of_activities'. The 'id' is a unique
       identifier for each activity, created by concatenating the 'user_id' and
@@ -172,7 +172,7 @@ models:
         data_type: timestamp
   - name: dim_activities
     description: "The 'dim_activities' model is a transformation of the
-      'base_public_activity' table from the 'dbt_patricia_staging' dataset. It
+      'stg_postgres__activity' table from the 'dbt_patricia_staging' dataset. It
       provides a simplified view of user activities, with each row representing
       a unique activity. The model includes the following columns: 'id' (the
       unique identifier for each activity), 'user_id' (the identifier for the
