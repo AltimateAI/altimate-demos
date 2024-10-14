@@ -1,6 +1,6 @@
 with
     users as (select * from {{ ref("dim_users") }}),
-    subscription as (select * from {{ ref("base_google_sheets_subscription") }}),
+    subscription as (select * from {{ ref("stg_google_sheets__subscription") }}),
     activities as (select * from {{ ref("dim_activities") }}),
 
     number_of_activities as (
@@ -21,7 +21,7 @@ with
     ), number_of_active_subscriptions as (
         select
             current_date as day,
-            count(case when status = 'active' then 1 end) as number_active_subscriptions
+            count(case when is_active then 1 end) as number_active_subscriptions
         from subscription
     ),
 
