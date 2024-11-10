@@ -114,3 +114,8 @@ models:
         description: This column indicates the date and time when the user's record was first created in the system. It helps in understanding when the user first became part of our database.
         data_type: timestamp
         quote: true
+      - name: number_of_activities
+        description: This column represents the total number of activities associated with each user. It is calculated by counting the number of entries in the 'activities' table for each user. This information can be useful for understanding user engagement and activity levels.
+        data_type: int64
+        quote: true
+    description: The 'dim_users' model is a comprehensive view of user data, combining information from both Salesforce and Postgres databases. It includes user identification details, contact information, activity data, and timestamps for creation and modification. This model is particularly useful for understanding user behavior and engagement, as it includes a count of activities per user. The model only includes active users, ensuring that the data is relevant and up-to-date.
