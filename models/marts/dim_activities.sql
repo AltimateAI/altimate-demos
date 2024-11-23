@@ -1,3 +1,7 @@
+{{ config(
+    full_refresh = false
+) }}
+
 with activity as (
     select * from {{ ref('stg_postgres__activity') }}
 ),
@@ -13,7 +17,7 @@ final as (
         activity_description as description,
 
         -- dates
-        activity_date as date
+        activity_date
     from activity
 )
 

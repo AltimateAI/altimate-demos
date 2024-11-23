@@ -64,7 +64,7 @@ models:
         description: This column contains a brief summary of the activity that the user has performed. It provides a textual explanation of the user's actions, which can be useful for understanding user behavior and trends.
         data_type: string
         quote: true
-      - name: date
+      - name: activity_date
         description: This column records the date and time when the activity was performed by the user. It is stored in a timestamp format, allowing for precise tracking of user activities over time.
         data_type: timestamp
         quote: true
