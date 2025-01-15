@@ -27,3 +27,4 @@ sources:
               for each new activity.
             tests:
               - unique
+      - name: user_preferences
