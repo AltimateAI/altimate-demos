@@ -13,7 +13,7 @@ final as (
         activity_description as description,
 
         -- dates
-        activity_date as date
+        date(activity_date) as date
     from activity
 )
 

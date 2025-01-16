@@ -21,7 +21,7 @@ with
             salesforce_users.is_active,
 
             salesforce_users.last_contacted_date,
-            salesforce_users.created_date,
+            date(salesforce_users.created_date) as created_date,
             salesforce_users.modified_date,
 
             postgres_users.created_at
