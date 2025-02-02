@@ -24,7 +24,7 @@ with
             day,
 
             number_users,
-            number_activities
+            number_logins
         from number_of_users
         left join number_of_activities using (day)
     )
