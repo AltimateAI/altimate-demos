@@ -23,11 +23,8 @@ with
         select
             day,
 
-            coalesce(number_users, 0) as number_users,
-            coalesce(number_activities, 0) as number_activities,
-            coalesce(number_logins, 0) as number_logins,
-            coalesce(number_logouts, 0) as number_logouts,
-            coalesce(number_posts, 0) as number_posts
+            number_users,
+            number_activities
         from number_of_users
         left join number_of_activities using (day)
     )
