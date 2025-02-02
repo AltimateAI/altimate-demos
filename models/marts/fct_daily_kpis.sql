@@ -5,10 +5,10 @@ with
     number_of_activities as (
         select
             date as day,
-            count(*) as number_activities,
-            sum(case when type = 'login' then 1 else 0 end) as number_logins,
-            sum(case when type = 'logout' then 1 else 0 end) as number_logouts,
-            sum(case when type = 'post' then 1 else 0 end) as number_posts
+            sum(
+                case when type = 'login'
+                then 1 else 0 end
+            ) as number_logins,
         from activities
         group by day
     ), number_of_users as (
