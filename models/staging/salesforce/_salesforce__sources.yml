@@ -16,3 +16,5 @@ sources:
               and databases.
             tests:
               - unique
+      - name: discounts
+      - name: refunds

@@ -28,3 +28,5 @@ sources:
             tests:
               - unique
       - name: user_preferences
+      - name: orders
+      - name: payments

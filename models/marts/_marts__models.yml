@@ -114,3 +114,42 @@ models:
         description: This column indicates the date and time when the user's record was first created in the system. It helps in understanding when the user first became part of our database.
         data_type: timestamp
         quote: true
+  - name: dim_orders
+    description: "This model provides a comprehensive view of all orders, including details about the customer, payment, discounts, and refunds. It includes the following columns: order_id, order_date, status, gross_revenue, total_discount, total_refunded, net_revenue, total_paid, payment_methods, email, and username. The gross_revenue column represents the total amount of the order before any discounts or refunds. The total_discount column represents the total amount of discounts applied to the order. The total_refunded column represents the total amount refunded for the order. The net_revenue column represents the final amount after applying discounts and refunds. The total_paid column represents the total amount paid by the customer. The payment_methods column represents the methods used by the customer to pay for the order. The email and username columns represent the customer's email and username respectively."
+    columns:
+      - name: order_id
+        data_type: string
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: order_date
+        data_type: date
+        quote: true
+      - name: status
+        data_type: string
+        quote: true
+      - name: gross_revenue
+        data_type: numeric
+        quote: true
+      - name: total_discount
+        data_type: numeric
+        quote: true
+      - name: total_refunded
+        data_type: numeric
+        quote: true
+      - name: net_revenue
+        data_type: numeric
+        quote: true
+      - name: total_paid
+        data_type: numeric
+        quote: true
+      - name: payment_methods
+        data_type: string
+        quote: true
+      - name: email
+        data_type: string
+        quote: true
+      - name: username
+        data_type: string
+        quote: true
