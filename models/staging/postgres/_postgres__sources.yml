@@ -30,3 +30,4 @@ sources:
       - name: user_preferences
       - name: orders
       - name: payments
+      - name: activity_partitioned

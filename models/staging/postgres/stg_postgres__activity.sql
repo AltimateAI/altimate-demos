@@ -1,5 +1,5 @@
 with source as (
-      select * from {{ source('postgres', 'activity') }}
+      select * from {{ source('postgres', 'activity_partitioned') }}
 ),
 renamed as (
     select
