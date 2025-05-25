@@ -7,6 +7,8 @@ sources:
       owner: Patricia Goldberg
     tables:
       - name: subscription
+        tags:
+          - source
         description: Subscription table in Google Sheets
         columns:
           - name: user_id
@@ -14,5 +16,5 @@ sources:
               integer value and is automatically generated when a new user is
               created. This field is used to link user data across different tables
               and databases.
-            tests:
+            data_tests:
               - unique

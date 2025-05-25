@@ -39,7 +39,10 @@ models:
     description: "This model provides a simplified view of the refunds data sourced from Salesforce. It includes two key columns: 'order_id' and 'refund_amount'. The 'order_id' column represents the unique identifier for each order, while the 'refund_amount' column indicates the amount refunded for that particular order."
     columns:
       - name: order_id
-        description: This is a unique identifier for each order. It is used to track and manage all transactions related to a specific order.
+        description: This is a unique identifier for each discount in our system.
+              It is an integer value and is automatically generated when a new
+              discount is created. This field is used to link discount data across
+              different tables and databases.
         data_type: string
         tests:
           - not_null
@@ -53,7 +56,10 @@ models:
     description: "This model provides a view of the discounts data sourced from Salesforce. It includes two key columns: 'order_id' and 'discount_amount'. The 'order_id' column represents the unique identifier for each order, while the 'discount_amount' column indicates the amount of discount applied to each order."
     columns:
       - name: order_id
-        description: This is a unique identifier for each order. It is a string value that is used to track and manage individual orders within the system.
+        description: This is a unique identifier for each discount in our system.
+              It is an integer value and is automatically generated when a new
+              discount is created. This field is used to link discount data across
+              different tables and databases.
         data_type: string
         tests:
           - not_null
