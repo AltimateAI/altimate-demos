@@ -3,14 +3,17 @@ models:
     description: The stg_google_sheets__subscription model is a transformation of the raw subscription data from Google Sheets. It includes the user_id, a boolean field indicating whether the subscription is active, and the start and end dates of the subscription. The 'is_active' field is derived from the 'status' field in the source data, with 'active' status mapped to TRUE and any other status mapped to FALSE.
     columns:
       - name: user_id
-        description: This is a unique identifier for each user. It is an integer value and is used to track individual user's subscription status.
+        description: This is a unique identifier for each user in our system. It is an
+              integer value and is automatically generated when a new user is
+              created. This field is used to link user data across different tables
+              and databases.
         data_type: int64
         quote: true
         tests:
           - not_null
           - unique
       - name: is_active
-        description: This is a boolean field that indicates whether a user's subscription is currently active or not. If the status is 'active', this field will be 'true'. If the status is anything other than 'active', this field will be 'false'.
+        description: This field indicates whether the user's account is currently active or not. If the value is 'true', it means the user's account is active. If the value is 'false', it means the user's account is not active.
         data_type: boolean
         quote: true
       - name: start_date

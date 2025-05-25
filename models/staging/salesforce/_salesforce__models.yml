@@ -18,19 +18,19 @@ models:
         description: This field contains the email address of the user. It is a string of characters and is used for communication purposes. It is also unique for each user, meaning no two users can have the same email address in our system.
         data_type: STRING
       - name: phone
-        description: The 'phone' field contains the user's phone number. This data is collected at the time of account creation or when the user updates their contact information. It is stored as a character-varying type, which means it can contain any set of characters and has a variable length.
+        description: This column contains the phone number of the user as recorded in the Salesforce database. It can be used for contacting the user directly.
         data_type: STRING
       - name: address
-        description: The 'address' field holds the user's physical address. This information is collected when the user creates an account or updates their profile. It is a character-varying type, meaning it can contain any set of characters and has a variable length.
+        description: This column holds the address of the user as recorded in the Salesforce database. It can be used for sending physical mail or for geographical analysis.
         data_type: STRING
       - name: last_contacted_date
-        description: This field represents the date when the user was last contacted. It is useful for tracking user engagement and planning future communications.
+        description: This field represents the last date when the user was contacted. It is recorded in the format of 'YYYY-MM-DD HH:MM:SS'. This information can be useful to understand the user's recent engagement with our services.
         data_type: DATE
       - name: created_date
-        description: This field indicates the date and time when the user's account was created. It helps in understanding the user's lifecycle and can be used for cohort analysis.
+        description: This field represents the date when the user's account was created. It is recorded in the format of 'YYYY-MM-DD HH:MM:SS'. This information can be useful to understand how long the user has been with us.
         data_type: TIMESTAMP
       - name: modified_date
-        description: The 'modified_date' column represents the date and time when the user's information was last updated in the Salesforce database. It is of TIMESTAMP data type.
+        description: This column represents the date and time when the user's information was last updated in the system. It is useful for tracking changes in user data over time.
         data_type: TIMESTAMP
       - name: is_active
         description: This field indicates whether the user's account is currently active or not. If the value is 'true', it means the user's account is active. If the value is 'false', it means the user's account is not active.
