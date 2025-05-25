@@ -42,6 +42,7 @@ models:
         description: This is a unique identifier for each order. It is used to track and manage all transactions related to a specific order.
         data_type: string
         tests:
+          - not_null
           - unique
         quote: true
       - name: refund_amount

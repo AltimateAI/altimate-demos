@@ -8,8 +8,6 @@ sources:
     tables:
       - name: subscription
         description: Subscription table in Google Sheets
-        tags:
-          - source
         columns:
           - name: user_id
             description: This is a unique identifier for each user in our system. It is an
