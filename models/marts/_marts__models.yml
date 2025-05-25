@@ -11,23 +11,8 @@ models:
       - name: number_users
         description: This column indicates the total number of users who have accessed our platform on the given day. It includes both new and returning users.
         data_type: bigint
-      - name: number_active_subscriptions
-        description: This column shows the total number of active subscriptions on the given day. An active subscription means that the user has an ongoing paid plan with us.
-        data_type: bigint
-      - name: number_activities
-        description: This column represents the total number of activities performed by all users on the current day. Activities can include actions such as logging in, logging out, and posting content.
-        data_type: bigint
       - name: number_logins
         description: This column indicates the total number of times users have logged into the platform on the current day. Each login is counted as a separate activity.
-        data_type: bigint
-      - name: number_logouts
-        description: This column shows the total number of times users have logged out of the platform on the current day. Each logout is counted as a separate activity.
-        data_type: bigint
-      - name: number_posts
-        description: This column represents the total number of posts made by users on the current day. It is a key indicator of user engagement and activity on the platform.
-        data_type: bigint
-      - name: contacted_today
-        description: This column indicates the number of users who were contacted on the current day. This could include any form of communication such as emails, notifications, or messages. It is a measure of the platform's outreach and engagement efforts.
         data_type: bigint
   - name: fct_user_activities
     description: "The 'fct_user_activities' model is a comprehensive view of user activities within our system. It combines data from the 'users' and 'stg_postgres__activity' tables to provide a detailed overview of each user's activities. The model includes the following columns: 'id', 'email', 'activity_type', and 'number_of_activities'. The 'id' is a unique identifier for each activity, created by concatenating the 'user_id' and 'activity_type'. The 'email' is the user's email address. The 'activity_type' indicates the type of activity the user has performed, and 'number_of_activities' is a count of how many times the user has performed that specific activity. This model is particularly useful for understanding user behavior and engagement within our platform."
@@ -35,6 +20,9 @@ models:
       - name: email
         description: This field contains the email address of the user. It is a string of characters and is used for communication purposes. It is also unique for each user, meaning no two users can have the same email address in our system.
         data_type: string
+        tests:
+          - not_null
+          - unique
       - name: type
         description: This column represents the type of activity that the user has engaged in. It is a string value that can vary depending on the different types of activities available in the system. This information is crucial for understanding user behavior and preferences.
         data_type: string
@@ -52,6 +40,9 @@ models:
         description: This is a unique identifier for each activity. It is used to distinguish one activity from another and is crucial for tracking and analysis purposes.
         data_type: int64
         quote: true
+        tests:
+          - not_null
+          - unique
       - name: user_id
         description: This is the unique identifier for each user. It helps to identify which user performed a particular activity. This is useful for understanding user behavior and patterns.
         data_type: int64
@@ -74,6 +65,9 @@ models:
         description: This is a unique identifier for each user in our system. It is an integer value and is automatically generated when a new user is created. This field is used to link user data across different tables and databases.
         data_type: int64
         quote: true
+        tests:
+          - not_null
+          - unique
       - name: email
         description: This field contains the email address of the user. It is a string value and is used for communication purposes. It is also unique for each user, meaning no two users can have the same email address in our system.
         data_type: string
@@ -114,6 +108,11 @@ models:
         description: This column indicates the date and time when the user's record was first created in the system. It helps in understanding when the user first became part of our database.
         data_type: timestamp
         quote: true
+      - name: number_of_activities
+        description: This column represents the total number of activities associated with each user. It is calculated by counting the number of entries in the 'activities' table for each user. This metric can be used to understand user engagement and activity levels.
+        data_type: int64
+        quote: true
+    description: "This model provides a comprehensive view of user data, combining information from both Salesforce and Postgres databases. It includes user identification, contact information, activity count, and status. The fields are as follows: 'user_id' is the unique identifier for each user. 'email', 'username', 'name', 'phone', and 'address' provide contact information. 'is_active' indicates whether the user is currently active. 'last_contacted_date' shows the last date the user was contacted. 'created_date' and 'modified_date' provide timestamps for when the user record was created and last updated. 'created_at' is the timestamp from the Postgres database. The 'number_of_activities' field, derived from the 'activity_by_user' subquery, shows the total number of activities associated with each user."
   - name: dim_orders
     description: "This model provides a comprehensive view of all orders, including details about the customer, payment, discounts, and refunds. It includes the following columns: order_id, order_date, status, gross_revenue, total_discount, total_refunded, net_revenue, total_paid, payment_methods, email, and username. The gross_revenue column represents the total amount of the order before any discounts or refunds. The total_discount column represents the total amount of discounts applied to the order. The total_refunded column represents the total amount refunded for the order. The net_revenue column represents the final amount after applying discounts and refunds. The total_paid column represents the total amount paid by the customer. The payment_methods column represents the methods used by the customer to pay for the order. The email and username columns represent the customer's email and username respectively."
     columns:
@@ -164,3 +163,17 @@ models:
         data_type: string
         quote: true
         description: This column represents the username of the customer who placed the order. It is sourced from the 'stg_postgres__user' table and is used as an alternative identifier for customers, especially in scenarios where the email address is not available or not provided.
+  - name: fct_users
+    description: "This model provides a daily count of users. It is derived from the 'stg_postgres__user' staging table and groups the data by the date the user was created. The model contains two columns: 'created_date' and 'count_users'. The 'created_date' column represents the date a user was created, and the 'count_users' column represents the total number of users created on that date."
+    columns:
+      - name: created_date
+        description: This column represents the date when a user was created in the system. It is derived from the 'created_at' field in the 'stg_postgres__user' table. The date is extracted from the timestamp to provide a daily view of user creation.
+        data_type: date
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: count_users
+        description: This column represents the total number of users created on a particular date. It is calculated by counting the number of records in the 'stg_postgres__user' table for each date. This metric is crucial for understanding the growth of our user base over time.
+        data_type: int64
+        quote: true

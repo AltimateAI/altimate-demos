@@ -1,69 +1,64 @@
 models:
   - name: base_salesforce_users
-    description: "The 'base_salesforce_users' model is a transformation of the
-      'users' table from the 'salesforce' schema in the 'ace-ellipse-229218'
-      project. It includes the following columns: 'user_id', 'first_name',
-      'last_name', 'email', 'phone', 'address', 'last_contacted_date',
-      'created_date', 'modified_date', and 'is_active'. These columns provide
-      comprehensive information about each user, including their contact
-      details, the last time they were contacted, when their record was created
-      and last modified, and whether their account is currently active."
+    description: "The 'base_salesforce_users' model is a transformation of the 'users' table from the 'salesforce' schema in the 'ace-ellipse-229218' project. It includes the following columns: 'user_id', 'first_name', 'last_name', 'email', 'phone', 'address', 'last_contacted_date', 'created_date', 'modified_date', and 'is_active'. These columns provide comprehensive information about each user, including their contact details, the last time they were contacted, when their record was created and last modified, and whether their account is currently active."
     columns:
       - name: user_id
-        description: This is a unique identifier for each user in our system. It is an
-          integer value and is automatically generated when a new user is
-          created. This field is used to link user data across different tables
-          and databases.
+        description: This is a unique identifier for each user in our system. It is an integer value and is automatically generated when a new user is created. This field is used to link user data across different tables and databases.
         data_type: INT64
         tests:
           - unique
           - not_null
       - name: first_name
-        description: This is the first name of the user. It is a string value and is
-          manually entered by the user or an administrator when the user profile
-          is created or updated.
+        description: This is the first name of the user. It is a string value and is manually entered by the user or an administrator when the user profile is created or updated.
         data_type: STRING
       - name: last_name
-        description: This is the last name of the user. Similar to the first name, it is
-          a string value and is manually entered by the user or an administrator
-          when the user profile is created or updated.
+        description: This is the last name of the user. Similar to the first name, it is a string value and is manually entered by the user or an administrator when the user profile is created or updated.
         data_type: STRING
       - name: email
-        description: This field contains the email address of the user. It is a string
-          of characters and is used for communication purposes. It is also
-          unique for each user, meaning no two users can have the same email
-          address in our system.
+        description: This field contains the email address of the user. It is a string of characters and is used for communication purposes. It is also unique for each user, meaning no two users can have the same email address in our system.
         data_type: STRING
       - name: phone
-        description: The 'phone' field contains the user's phone number. This data is
-          collected at the time of account creation or when the user updates
-          their contact information. It is stored as a character-varying type,
-          which means it can contain any set of characters and has a variable
-          length.
+        description: The 'phone' field contains the user's phone number. This data is collected at the time of account creation or when the user updates their contact information. It is stored as a character-varying type, which means it can contain any set of characters and has a variable length.
         data_type: STRING
       - name: address
-        description: The 'address' field holds the user's physical address. This
-          information is collected when the user creates an account or updates
-          their profile. It is a character-varying type, meaning it can contain
-          any set of characters and has a variable length.
+        description: The 'address' field holds the user's physical address. This information is collected when the user creates an account or updates their profile. It is a character-varying type, meaning it can contain any set of characters and has a variable length.
         data_type: STRING
       - name: last_contacted_date
-        description: This field represents the date when the user was last contacted. It
-          is useful for tracking user engagement and planning future
-          communications.
+        description: This field represents the date when the user was last contacted. It is useful for tracking user engagement and planning future communications.
         data_type: DATE
       - name: created_date
-        description: This field indicates the date and time when the user's account was
-          created. It helps in understanding the user's lifecycle and can be
-          used for cohort analysis.
+        description: This field indicates the date and time when the user's account was created. It helps in understanding the user's lifecycle and can be used for cohort analysis.
         data_type: TIMESTAMP
       - name: modified_date
-        description: The 'modified_date' column represents the date and time when the
-          user's information was last updated in the Salesforce database. It is
-          of TIMESTAMP data type.
+        description: The 'modified_date' column represents the date and time when the user's information was last updated in the Salesforce database. It is of TIMESTAMP data type.
         data_type: TIMESTAMP
       - name: is_active
-        description: This field indicates whether the user's account is currently active
-          or not. If the value is 'true', it means the user's account is active.
-          If the value is 'false', it means the user's account is not active.
+        description: This field indicates whether the user's account is currently active or not. If the value is 'true', it means the user's account is active. If the value is 'false', it means the user's account is not active.
         data_type: BOOLEAN
+  - name: stg_salesforce__refunds
+    description: "This model provides a simplified view of the refunds data sourced from Salesforce. It includes two key columns: 'order_id' and 'refund_amount'. The 'order_id' column represents the unique identifier for each order, while the 'refund_amount' column indicates the amount refunded for that particular order."
+    columns:
+      - name: order_id
+        description: This is a unique identifier for each order. It is used to track and manage all transactions related to a specific order.
+        data_type: string
+        tests:
+          - unique
+        quote: true
+      - name: refund_amount
+        description: This column represents the total amount refunded for a particular order. It is a numeric value that is derived from the 'refunds' table in the Salesforce database. This information is crucial for understanding the financial impact of refunds on overall sales and revenue.
+        data_type: numeric
+        quote: true
+  - name: stg_salesforce__discounts
+    description: "This model provides a view of the discounts data sourced from Salesforce. It includes two key columns: 'order_id' and 'discount_amount'. The 'order_id' column represents the unique identifier for each order, while the 'discount_amount' column indicates the amount of discount applied to each order."
+    columns:
+      - name: order_id
+        description: This is a unique identifier for each order. It is a string value that is used to track and manage individual orders within the system.
+        data_type: string
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: discount_amount
+        description: This numeric value represents the amount of discount applied to a particular order. It is calculated based on the discount policies and rules set by the business.
+        data_type: numeric
+        quote: true

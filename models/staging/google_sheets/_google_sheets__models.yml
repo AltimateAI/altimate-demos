@@ -1,33 +1,23 @@
 models:
   - name: stg_google_sheets__subscription
-    description: The stg_google_sheets__subscription model is a transformation of
-      the raw subscription data from Google Sheets. It includes the user_id, a
-      boolean field indicating whether the subscription is active, and the start
-      and end dates of the subscription. The 'is_active' field is derived from
-      the 'status' field in the source data, with 'active' status mapped to TRUE
-      and any other status mapped to FALSE.
+    description: The stg_google_sheets__subscription model is a transformation of the raw subscription data from Google Sheets. It includes the user_id, a boolean field indicating whether the subscription is active, and the start and end dates of the subscription. The 'is_active' field is derived from the 'status' field in the source data, with 'active' status mapped to TRUE and any other status mapped to FALSE.
     columns:
       - name: user_id
-        description: This is a unique identifier for each user. It is an integer value
-          and is used to track individual user's subscription status.
+        description: This is a unique identifier for each user. It is an integer value and is used to track individual user's subscription status.
         data_type: int64
         quote: true
+        tests:
+          - not_null
+          - unique
       - name: is_active
-        description: This is a boolean field that indicates whether a user's
-          subscription is currently active or not. If the status is 'active',
-          this field will be 'true'. If the status is anything other than
-          'active', this field will be 'false'.
+        description: This is a boolean field that indicates whether a user's subscription is currently active or not. If the status is 'active', this field will be 'true'. If the status is anything other than 'active', this field will be 'false'.
         data_type: boolean
         quote: true
       - name: start_date
-        description: This is the date when the user's subscription started. It is in the
-          format 'YYYY-MM-DD'. This field helps us understand when the user
-          began their subscription.
+        description: This is the date when the user's subscription started. It is in the format 'YYYY-MM-DD'. This field helps us understand when the user began their subscription.
         data_type: date
         quote: true
       - name: end_date
-        description: This column represents the date when a user's subscription ended.
-          It is in date format (YYYY-MM-DD). If a user's subscription is still
-          active, this field will be null.
+        description: This column represents the date when a user's subscription ended. It is in date format (YYYY-MM-DD). If a user's subscription is still active, this field will be null.
         data_type: date
         quote: true

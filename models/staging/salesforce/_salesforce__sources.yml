@@ -17,4 +17,26 @@ sources:
             tests:
               - unique
       - name: discounts
+        description: Discounts table in Salesforce
+        tags:
+          - source
+        columns:
+          - name: order_id
+            description: This is a unique identifier for each discount in our system.
+              It is an integer value and is automatically generated when a new
+              discount is created. This field is used to link discount data across
+              different tables and databases.
+            tests:
+              - unique
       - name: refunds
+        description: Refunds table in Salesforce
+        tags:
+          - source
+        columns:
+          - name: order_id
+            description: This is a unique identifier for each refund in our system.
+              It is an integer value and is automatically generated when a new refund
+              is created. This field is used to link refund data across different
+              tables and databases.
+            tests:
+              - unique
