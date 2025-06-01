@@ -1,4 +1,100 @@
 models:
+  - name: stg_google_sheets__subscription
+    description: The stg_google_sheets__subscription model is a transformation of the raw subscription data from Google Sheets. It includes the user_id, a boolean field indicating whether the subscription is active, and the start and end dates of the subscription. The 'is_active' field is derived from the 'status' field in the source data, with 'active' status mapped to TRUE and any other status mapped to FALSE.
+    columns:
+      - name: user_id
+        description: This is a unique identifier for each user in our system. It is an
+              integer value and is automatically generated when a new user is
+              created. This field is used to link user data across different tables
+              and databases.
+        data_type: int64
+        quote: true
+        tests:
+          - not_null
+          - unique
+      - name: is_active
+        description: This field indicates whether the user's account is currently active or not. If the value is 'true', it means the user's account is active. If the value is 'false', it means the user's account is not active.
+        data_type: boolean
+        quote: true
+      - name: start_date
+        description: This is the date when the user's subscription started. It is in the format 'YYYY-MM-DD'. This field helps us understand when the user began their subscription.
+        data_type: date
+        quote: true
+      - name: end_date
+        description: This column represents the date when a user's subscription ended. It is in date format (YYYY-MM-DD). If a user's subscription is still active, this field will be null.
+        data_type: date
+        quote: true
+  - name: base_salesforce_users
+    description: "The 'base_salesforce_users' model is a transformation of the 'users' table from the 'salesforce' schema in the 'ace-ellipse-229218' project. It includes the following columns: 'user_id', 'first_name', 'last_name', 'email', 'phone', 'address', 'last_contacted_date', 'created_date', 'modified_date', and 'is_active'. These columns provide comprehensive information about each user, including their contact details, the last time they were contacted, when their record was created and last modified, and whether their account is currently active."
+    columns:
+      - name: user_id
+        description: This is a unique identifier for each user in our system. It is an integer value and is automatically generated when a new user is created. This field is used to link user data across different tables and databases.
+        data_type: INT64
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: This is the first name of the user. It is a string value and is manually entered by the user or an administrator when the user profile is created or updated.
+        data_type: STRING
+      - name: last_name
+        description: This is the last name of the user. Similar to the first name, it is a string value and is manually entered by the user or an administrator when the user profile is created or updated.
+        data_type: STRING
+      - name: email
+        description: This field contains the email address of the user. It is a string of characters and is used for communication purposes. It is also unique for each user, meaning no two users can have the same email address in our system.
+        data_type: STRING
+      - name: phone
+        description: This column contains the phone number of the user as recorded in the Salesforce database. It can be used for contacting the user directly.
+        data_type: STRING
+      - name: address
+        description: This column holds the address of the user as recorded in the Salesforce database. It can be used for sending physical mail or for geographical analysis.
+        data_type: STRING
+      - name: last_contacted_date
+        description: This field represents the last date when the user was contacted. It is recorded in the format of 'YYYY-MM-DD HH:MM:SS'. This information can be useful to understand the user's recent engagement with our services.
+        data_type: DATE
+      - name: created_date
+        description: This field represents the date when the user's account was created. It is recorded in the format of 'YYYY-MM-DD HH:MM:SS'. This information can be useful to understand how long the user has been with us.
+        data_type: TIMESTAMP
+      - name: modified_date
+        description: This column represents the date and time when the user's information was last updated in the system. It is useful for tracking changes in user data over time.
+        data_type: TIMESTAMP
+      - name: is_active
+        description: This field indicates whether the user's account is currently active or not. If the value is 'true', it means the user's account is active. If the value is 'false', it means the user's account is not active.
+        data_type: BOOLEAN
+  - name: stg_salesforce__refunds
+    description: "This model provides a simplified view of the refunds data sourced from Salesforce. It includes two key columns: 'order_id' and 'refund_amount'. The 'order_id' column represents the unique identifier for each order, while the 'refund_amount' column indicates the amount refunded for that particular order."
+    columns:
+      - name: order_id
+        description: This is a unique identifier for each discount in our system.
+              It is an integer value and is automatically generated when a new
+              discount is created. This field is used to link discount data across
+              different tables and databases.
+        data_type: string
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: refund_amount
+        description: This column represents the total amount refunded for a particular order. It is a numeric value that is derived from the 'refunds' table in the Salesforce database. This information is crucial for understanding the financial impact of refunds on overall sales and revenue.
+        data_type: numeric
+        quote: true
+  - name: stg_salesforce__discounts
+    description: "This model provides a view of the discounts data sourced from Salesforce. It includes two key columns: 'order_id' and 'discount_amount'. The 'order_id' column represents the unique identifier for each order, while the 'discount_amount' column indicates the amount of discount applied to each order."
+    columns:
+      - name: order_id
+        description: This is a unique identifier for each discount in our system.
+              It is an integer value and is automatically generated when a new
+              discount is created. This field is used to link discount data across
+              different tables and databases.
+        data_type: string
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: discount_amount
+        description: This numeric value represents the amount of discount applied to a particular order. It is calculated based on the discount policies and rules set by the business.
+        data_type: numeric
+        quote: true
+models:
   - name: stg_postgres__activity
     description: "The 'stg_postgres__activity' model is a transformation of the 'activity' table from the 'postgres' database. It contains information about various activities performed by users. The model includes the following columns: 'activity_id', 'user_id', 'activity_type', 'activity_date', and 'activity_description'. 'activity_id' is a unique identifier for each activity. 'user_id' represents the unique identifier of the user who performed the activity. 'activity_type' describes the type of activity performed. 'activity_date' is the date when the activity was performed. 'activity_description' provides a detailed description of the activity."
     columns:
