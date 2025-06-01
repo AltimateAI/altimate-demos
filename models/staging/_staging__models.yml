@@ -94,7 +94,6 @@ models:
         description: This numeric value represents the amount of discount applied to a particular order. It is calculated based on the discount policies and rules set by the business.
         data_type: numeric
         quote: true
-models:
   - name: stg_postgres__activity
     description: "The 'stg_postgres__activity' model is a transformation of the 'activity' table from the 'postgres' database. It contains information about various activities performed by users. The model includes the following columns: 'activity_id', 'user_id', 'activity_type', 'activity_date', and 'activity_description'. 'activity_id' is a unique identifier for each activity. 'user_id' represents the unique identifier of the user who performed the activity. 'activity_type' describes the type of activity performed. 'activity_date' is the date when the activity was performed. 'activity_description' provides a detailed description of the activity."
     columns:

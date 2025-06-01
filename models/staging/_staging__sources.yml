@@ -57,9 +57,6 @@ sources:
               different tables and databases.
             tests:
               - unique
-version: 2
-
-sources:
   - name: postgres
     loader: Airbyte
     tables:
