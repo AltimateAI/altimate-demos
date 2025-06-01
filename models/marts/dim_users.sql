@@ -1,5 +1,5 @@
 with
-    salesforce_users as (
+    base_salesforce_users as (
         select
             base_salesforce_users.address as address,
             base_salesforce_users.created_date as created_date,
@@ -36,24 +36,24 @@ with
     ),
     users_info as (
         select
-            salesforce_users.user_id as user_id,
-            salesforce_users.email as email,
+            base_salesforce_users.user_id as user_id,
+            base_salesforce_users.email as email,
             postgres_users.username as username,
             concat(
-                salesforce_users.first_name, ' ', salesforce_users.last_name
+                base_salesforce_users.first_name, ' ', base_salesforce_users.last_name
             ) as name,
-            salesforce_users.phone as phone,
-            salesforce_users.address as address,
-            salesforce_users.is_active as is_active,
-            salesforce_users.last_contacted_date as last_contacted_date,
-            date(salesforce_users.created_date) as created_date,
-            salesforce_users.modified_date as modified_date,
+            base_salesforce_users.phone as phone,
+            base_salesforce_users.address as address,
+            base_salesforce_users.is_active as is_active,
+            base_salesforce_users.last_contacted_date as last_contacted_date,
+            date(base_salesforce_users.created_date) as created_date,
+            base_salesforce_users.modified_date as modified_date,
             postgres_users.created_at as created_at
-        from salesforce_users as salesforce_users
+        from base_salesforce_users as base_salesforce_users
         left join
             postgres_users as postgres_users
-            on salesforce_users.user_id = postgres_users.user_id
-        where salesforce_users.is_active
+            on base_salesforce_users.user_id = postgres_users.user_id
+        where base_salesforce_users.is_active
     ),
     final as (
         select

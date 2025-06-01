@@ -1,0 +1,34 @@
+version: v1
+
+# Insights to disable
+disabled_insights:
+  - check_source_tags
+  - check_source_has_tests
+  - staging_models_on_staging
+  - model_directory_structure
+  - source_directory_structure
+
+# Define patterns to identify different types of models
+model_type_patterns:
+  staging: "^stg_.*"       # Regex for staging models
+  marts: "^(mrt_|mart_|fct_|dim_).*"  # Regex for mart models
+  intermediate: "^int_.*"  # Regex for intermediate models
+  base: "^base_.*"         # Regex for base models
+
+# Configure insights
+insights:
+  # Set minimum test coverage percent and severity for 'Low Test Coverage in DBT Models'
+  dbt_low_test_coverage:
+    min_test_coverage_percent: 30
+    severity: WARNING
+
+  # Configure maximum fanout for 'Model Fanout Analysis'
+  model_fanout.max_fanout: 10
+
+  # Configure maximum fanout for 'Source Fanout Analysis'
+  source_fanout.max_fanout: 10
+
+  # Define model types considered as downstream for 'Staging Models Dependency Check'
+  staging_models_dependency.downstream_model_types:
+    - mart
+
