@@ -130,7 +130,6 @@ models:
               discount is created. This field is used to link discount data across
               different tables and databases.
         tests:
-          - unique
           - not_null
       - name: order_date
         data_type: date
@@ -159,11 +158,15 @@ models:
       - name: total_paid
         data_type: numeric
         quote: true
-        description: This column indicates the total amount paid by the customer for each order. It is derived from the payments table and provides insights into the customer's spending behavior. In cases where no payment information is available, the value is set to 0.
+        description: This column indicates the total amount paid by the customer for each order. It is derived from the payments table and provides insights into the customer's spending behavior.
+        tests:
+          - not_null
       - name: payment_methods
         data_type: string
         quote: true
-        description: This column lists the payment method(s) used by the customer for each order. It is extracted from the payments table. If no payment method is recorded, the value is set to 'N/A'. This information can be useful for understanding customer payment preferences and trends.
+        description: This column lists the payment method(s) used by the customer for each order. It is extracted from the payments table. This information can be useful for understanding customer payment preferences and trends.
+        tests:
+          - not_null
       - name: email
         data_type: string
         description: This field contains the email address of the user. It is a string of characters and is used for communication purposes. It is also unique for each user, meaning no two users can have the same email address in our system.

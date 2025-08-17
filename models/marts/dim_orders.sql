@@ -49,8 +49,8 @@ with
                 - coalesce(d.total_discount, 0)
                 - coalesce(r.total_refunded, 0)
             ) as net_revenue,
-            coalesce(p.total_paid, 0) as total_paid,
-            coalesce(p.payment_methods, 'N/A') as payment_methods,
+            p.total_paid,
+            p.payment_methods,
             c.email as email,
             c.username as username
         from orders as o

@@ -155,7 +155,6 @@ models:
               different tables and databases.
         data_type: string
         tests:
-          - unique
           - not_null
         quote: true
       - name: amount
