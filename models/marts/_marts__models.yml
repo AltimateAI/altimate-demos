@@ -158,13 +158,13 @@ models:
       - name: total_paid
         data_type: numeric
         quote: true
-        description: This column indicates the total amount paid by the customer for each order. It is derived from the payments table and provides insights into the customer's spending behavior.
+        description: This column indicates the total amount paid by the customer for each order. It is derived from the payments table and provides insights into the customer's spending behavior. If no payment record exists, this column defaults to 0 to ensure data consistency.
         tests:
           - not_null
       - name: payment_methods
         data_type: string
         quote: true
-        description: This column lists the payment method(s) used by the customer for each order. It is extracted from the payments table. This information can be useful for understanding customer payment preferences and trends.
+        description: This column lists the payment method(s) used by the customer for each order. It is extracted from the payments table and defaults to 'unknown' when no payment record exists. This information can be useful for understanding customer payment preferences and trends while maintaining data consistency.
         tests:
           - not_null
       - name: email
